@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Lesson;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Module extends Model
 {
-    protected $fillable = ["name", "order"];
+    protected $fillable = ["name", "order", "course_id"];
 
-    public function courses(): HasMany
+    public function course(): BelongsTo
     {
-        return $this->hasMany(Lesson::class);
+        return $this->belongsTo(Course::class);
     }
 }
