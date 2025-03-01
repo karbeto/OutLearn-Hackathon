@@ -14,9 +14,10 @@ Route::post("/logout", [ApiAuthController::class, "logout"]);
 Route::get("/user/{user}", [ApiController::class, "user"]);
 
 // Courses
-// /api/courses gi vrakja bez profesori
-// /api/courses?professors=true vrakja courses with professors
+// /api/courses gi vrakja courses so profesori
+// /api/courses?professors=false vrakja courses bez professors
 Route::get("/courses", [ApiController::class, "courses"]);
+Route::get("/courses/{course}", [ApiController::class, "course"]);
 
 // Get professors
 Route::get("/professors", [ApiController::class, "professors"]);

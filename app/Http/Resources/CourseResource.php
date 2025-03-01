@@ -15,7 +15,7 @@ class CourseResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $includeProfessors = $request->has("professors");
+        $includeProfessors = !$request->has("professors");
 
         return [
             'id' => $this->id,

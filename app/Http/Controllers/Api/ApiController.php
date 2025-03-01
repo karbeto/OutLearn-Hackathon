@@ -19,7 +19,7 @@ class ApiController extends Controller
     {
         $limit = $request->input("limit", null);
         //bolean
-        $withProfessors = $request->input("professors", false);
+        $withProfessors = !$request->has("professors");
 
         $courses = Course::with('modules')
             ->when($withProfessors, function ($query) {
@@ -65,5 +65,12 @@ class ApiController extends Controller
             ->get();
 
         return $this->dataResponse(UserResource::collection($professors));
+    }
+
+    public function course(Course $course)
+    {
+        $course->load('modules', 'professors'); // Load modules and professors if necessary
+
+        return new CourseResource($course);
     }
 }
