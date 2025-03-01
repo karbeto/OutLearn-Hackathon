@@ -6,9 +6,10 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("categories.index");
 
 Route::resource('courses', CourseController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

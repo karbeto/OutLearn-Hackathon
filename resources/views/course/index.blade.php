@@ -1,6 +1,6 @@
 @extends('admin-dashboard')
 
-@section('title', 'Manage Categories')
+@section('title', 'Manage Courses')
 
 @section('custom-content')
 <div class="p-6">
