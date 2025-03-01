@@ -13,7 +13,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        dd("e");
+        $courses = Course::with("category")->get();
+        return view("course.index", compact('courses'));
     }
 
     /**
