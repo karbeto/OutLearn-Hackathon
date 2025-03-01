@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\CourseResource;
+use App\Http\Resources\InterestsResource;
 use App\Http\Resources\LessonResource;
 use App\Http\Resources\ModuleResource;
+use App\Models\Interest;
 use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\Role;
@@ -90,5 +92,12 @@ class ApiController extends Controller
         $lesson->load("module");
 
         return $this->dataResponse(new LessonResource($lesson));
+    }
+
+    public function interests()
+    {
+        $interests = Interest::all();
+
+        return $this->dataResponse(InterestsResource::collection($interests));
     }
 }
