@@ -49,7 +49,7 @@ class CourseController extends Controller
     {
         $categories = Category::all();
 
-        return view('courses.edit', compact('course', 'categories'));
+        return view('course.edit', compact('course', 'categories'));
     }
 
     // Update Course

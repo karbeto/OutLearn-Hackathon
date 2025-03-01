@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Course</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+@extends('admin-dashboard')
+@section("title","Manage Courses")
 
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+@section("custom-content")
+
+<div class="flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
         <h2 class="text-2xl font-bold text-gray-700 text-center mb-6">Edit Course</h2>
 
         @if ($errors->any())
@@ -22,23 +18,23 @@
             </div>
         @endif
 
-        <form action="{{ route('courses.update', $course->id) }}" method="POST">
+        <form action="{{ route('courses.update', $course) }}" method="POST" class="space-y-4">
             @csrf
             @method('PUT')
 
-            <div class="mb-4">
+            <div>
                 <label class="block text-gray-600 text-sm font-medium" for="title">Course Title</label>
-                <input type="text" id="title" name="title" value="{{ old('title', $course->title) }}" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" required>
+                <input type="text" id="title" name="title" value="{{ old('title', $course->title) }}" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="mb-4">
+            <div>
                 <label class="block text-gray-600 text-sm font-medium" for="description">Description</label>
-                <textarea id="description" name="description" rows="4" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" required>{{ old('description', $course->description) }}</textarea>
+                <textarea id="description" name="description" rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>{{ old('description', $course->description) }}</textarea>
             </div>
 
-            <div class="mb-4">
+            <div>
                 <label class="block text-gray-600 text-sm font-medium" for="category_id">Category</label>
-                <select id="category_id" name="category_id" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500" required>
+                <select id="category_id" name="category_id" class="w-full mt-1 px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $course->category_id == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
@@ -53,6 +49,6 @@
             </div>
         </form>
     </div>
+</div>
 
-</body>
-</html>
+@endsection

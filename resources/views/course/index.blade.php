@@ -24,12 +24,12 @@
             <tbody>
                 @foreach ($courses as $course)
                 <tr class="border-b text-black">
-                    <td class="p-3 border">{{ $course->name }}</td>
+                    <td class="p-3 border">{{ $course->title }}</td>
                     <td class="p-3 border">{{ $course->description }}</td>
                     <td class="p-3 border">{{ $course->category->name }}</td>
                     <td class="p-3 border">
-                        <a href="{{ route('courses.edit', $course->id) }}" class="text-blue-500 hover:underline">Edit</a>
-                        <form action="{{ route('courses.destroy', $course->id) }}" method="POST" class="inline">
+                        <a href="{{ route('courses.edit', $course) }}" class="text-blue-500 hover:underline">Edit</a>
+                        <form action="{{ route('courses.destroy', $course) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:underline ml-2" onclick="return confirm('Are you sure?')">
