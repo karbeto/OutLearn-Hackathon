@@ -29,7 +29,7 @@
                 <td class="p-3 border">{{ $course->category->name }}</td>
                 <td class="p-3 border text-center">
                     <div class="flex items-center space-x-3">
-                        <a href="{{ route('courses.edit', $course) }}" class="text-blue-500 hover:underline">Manage Modules</a>
+                        <a href="{{ route('modules.index', $course) }}" class="text-blue-500 hover:underline">Manage Modules</a>
                         <a href="{{ route('courses.edit', $course) }}" class="text-blue-500 hover:underline">Edit</a>
                         <form action="{{ route('courses.destroy', $course) }}" method="POST" class="inline">
                             @csrf
