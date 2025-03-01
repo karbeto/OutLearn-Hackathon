@@ -40,6 +40,16 @@
                 </select>
             </div>
 
+            <div class="mb-4 text-black">
+                <label for="professor_ids" class="block text-sm mb-2 font-semibold text-blue-900">Assign Professors</label>
+                <select name="professor_ids[]" id="professor_ids" class="w-full p-2 border rounded-lg" multiple required>
+                    @foreach ($professors as $professor)
+                        <option value="{{ $professor->id }}">{{ $professor->name }}</option>
+                    @endforeach
+                </select>
+                <small class="text-gray-500">Hold Ctrl (Windows) / Command (Mac) to select multiple.</small>
+            </div>
+
             <div class="flex justify-between items-center">
                 <a href="{{ route('courses.index') }}" class="text-sm text-blue-900 hover:text-blue-700">Cancel</a>
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">

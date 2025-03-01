@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,6 +15,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::with("category")->get();
+
         return view("course.index", compact('courses'));
     }
 
@@ -23,7 +25,12 @@ class CourseController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("course.create", compact("categories"));
+        $professors = User::with(["professorData", "role"])
+            ->whereHas("role", function ($query) {
+                $query->where("name", "professor");
+            })
+            ->get();
+        return view("course.create", compact("categories", "professors"));
     }
 
     /**
@@ -35,9 +42,13 @@ class CourseController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
+            'professor_ids' => 'required|array',
+            'professor_ids.*' => 'exists:users,id',
         ]);
 
-        Course::create($validatedData);
+        $course = Course::create($validatedData);
+
+        $course->professors()->sync($request->professor_ids);
 
         return redirect()->route("courses.index")->with('success', 'Course created successfully!');;
     }
