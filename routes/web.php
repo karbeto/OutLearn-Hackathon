@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -38,5 +39,12 @@ Route::get("/modules/index/{course}", [ModuleController::class, "index"])->name(
 Route::get("/modules/edit/{module}", [ModuleController::class, "edit"])->name("modules.edit");
 Route::put("/modules/update/{module}", [ModuleController::class, "update"])->name("modules.update");
 Route::delete("/modules/delete/{module}", [ModuleController::class, "destroy"])->name("modules.destroy");
+
+Route::get('lessons/{module_id}', [LessonController::class, 'index'])->name('lessons.index');
+Route::get('lessons/{module_id}/create', [LessonController::class, 'create'])->name('lessons.create');
+Route::post('lessons/{module_id}', [LessonController::class, 'store'])->name('lessons.store'); 
+Route::get('lessons/{module_id}/{lesson_id}/edit', [LessonController::class, 'edit'])->name('lessons.edit');
+Route::put('lessons/{module_id}/{lesson_id}', [LessonController::class, 'update'])->name('lessons.update'); 
+Route::delete('lessons/{module_id}/{lesson_id}', [LessonController::class, 'destroy'])->name('lessons.destroy'); 
 
 require __DIR__ . '/auth.php';

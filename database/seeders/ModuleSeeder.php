@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Module;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,5 +20,9 @@ class ModuleSeeder extends Seeder
             ['course_id' => 2, 'name'=>'Control Flow and Functions', 'order'=> 2],
             ['course_id' => 2, 'name'=>'Introduction to Object-Oriented Programming', 'order'=> 3],
         ];
+
+        foreach ($modules as $module) {
+            Module::create($module);
+        }
     }
 }

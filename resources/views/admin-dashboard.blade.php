@@ -35,7 +35,7 @@
 
             </div>
 
-            <a href="#"
+            <a href="{{ route('logout') }}"
                 class="flex items-center py-2 px-3 mb-2 w-full text-left bg-red-600 hover:bg-red-500 rounded text-sm text-white">
                 <span>Logout</span>
             </a>
