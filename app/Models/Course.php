@@ -25,7 +25,7 @@ class Course extends Model
 
     public function professors(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, "course_proffesor")->wherePivot('role', 'professor');
+        return $this->belongsToMany(User::class, "course_proffesor", 'course_id', 'professor_id');
     }
 
     public function modules(): HasMany
