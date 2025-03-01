@@ -22,17 +22,14 @@
             <div class="mb-4">
                 <h3 class="text-lg font-bold mb-2">CRUD:</h3>
                 <div class="mb-4">
-                    <a href="{{route('courses.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
+                    <a href="{{route(name: 'courses.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
                         • Manage Courses
-                    </a>
-                    <a href="" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
-                        • Manage Modules
-                    </a>
-                    <a href="" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
-                        • Manage Lectures
                     </a>
                     <a href="{{ route('categories.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
                         • Manage Categories
+                    </a>
+                    <a href="{{route(name: 'interests.index') }}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
+                        • Manage Interests
                     </a>
                 </div>
 
