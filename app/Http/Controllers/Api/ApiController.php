@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\CourseResource;
+use App\Http\Resources\LessonResource;
+use App\Http\Resources\ModuleResource;
+use App\Models\Lesson;
+use App\Models\Module;
 use App\Models\Role;
 
 class ApiController extends Controller
@@ -71,6 +75,20 @@ class ApiController extends Controller
     {
         $course->load('modules', 'professors'); // Load modules and professors if necessary
 
-        return new CourseResource($course);
+        return $this->dataResponse(new CourseResource($course));
+    }
+
+    public function module(Module $module)
+    {
+        $module->load("lessons");
+
+        return $this->dataResponse(new ModuleResource($module));
+    }
+
+    public function lesson(Lesson $lesson)
+    {
+        $lesson->load("module");
+
+        return $this->dataResponse(new LessonResource($lesson));
     }
 }

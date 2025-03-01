@@ -24,3 +24,7 @@ Route::get("/professors", [ApiController::class, "professors"]);
 
 // Get students
 Route::get("/students", [ApiController::class, "students"]);
+
+// get Module
+Route::get("/modules/{module}", [ApiController::class, "module"]);
+Route::get("/lesson/{lesson}", [ApiController::class, "lesson"]);
