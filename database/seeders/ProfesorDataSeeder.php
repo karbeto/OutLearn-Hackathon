@@ -29,8 +29,8 @@ class ProfesorDataSeeder extends Seeder
                 'gender' => 'female',
                 'birth_date' => '1974-02-27',
                 'work_experience_years' => 28,
-                'created_at' => Carbon::parse('2024-11-16T13:21:00'),
-                'updated_at' => Carbon::parse('2025-02-24T00:08:21'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
         ]);
     }
