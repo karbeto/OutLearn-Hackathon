@@ -30,7 +30,7 @@
                     <td class="p-3 border">{{ $lesson->order_number }}</td>
                     @if (!is_null($lesson->video_url) || strlen($lesson->video_url) > 0)
                         <td class="p-3 border flex justify-center items-center">
-                            <video controls class="h-40">
+                            <video controls class="h-40" preload="auto">
                                 <source src="{{ asset('storage/' . $lesson->video_url) }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
