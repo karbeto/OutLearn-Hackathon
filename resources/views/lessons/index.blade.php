@@ -37,22 +37,23 @@
                             
                         </td>
                     @else
-                    <td class="p-3 border">No video provided yet.</td>
+                        <td class="p-3 border">No video provided yet.</td>
                     @endif
-                    <td class="p-3 border space-x-2">
-                        <a href="{{ route('lessons.edit', ['module' => $module, 'lesson' => $lesson]) }}" 
-                            class="bg-blue-200 text-blue-700 px-4 py-2 rounded hover:bg-blue-300 transition duration-300">
-                             Edit
-                         </a>
-                         
-                        <form action="{{ route('lessons.destroy', ['module' => $module, 'lesson' => $lesson]) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-200 text-red-700 px-4 py-2 rounded hover:bg-red-300 transition duration-300">
-                                Delete
-                            </button>
+                    <td class="p-3 border w-40">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{{ route('lessons.edit', ['module' => $module, 'lesson' => $lesson]) }}" 
+                                class="bg-blue-200 text-blue-700 px-4 py-2 rounded hover:bg-blue-300 transition duration-300">
+                                Edit
+                            </a>
                             
-                        </form>
+                            <form action="{{ route('lessons.destroy', ['module' => $module, 'lesson' => $lesson]) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-200 text-red-700 px-4 py-2 rounded hover:bg-red-300 transition duration-300">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

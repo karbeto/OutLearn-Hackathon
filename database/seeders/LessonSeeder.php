@@ -2,39 +2,48 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Module;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+
 class LessonSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        Lesson::insert([
-            [
-                "module_id" => 1,
-                "title" => "Advanced Quantum",
-                "content" => "Description",
-                "video_url"  => "",
-                "order_number"  => 1
-            ],
-            [
-                "module_id" => 1,
-                "title" => "Advanced Quantum2",
-                "content" => "Description2",
-                "video_url"  => "",
-                "order_number"  => 2
-            ],
-            [
-                "module_id" => 2,
-                "title" => "Advanced Quantum3",
-                "content" => "Description3",
-                "video_url"  => "",
-                "order_number"  => 1
-            ]
-        ]);
+        // Get all courses
+        $modules = Module::all();
+
+        foreach ($modules as $module) {
+            $lessons = [
+                [
+                    'module_id' => $module->id,  // assuming there's a relation between module and modules
+                    'title' => 'Introduction to ' . $module->name,
+                    'content' => 'This is the first lesson for ' . $module->name . '. It covers the basics.',
+                    'video_url' => '',
+                    'order_number' => 1,
+                ],
+                [
+                    'module_id' => $module->id,
+                    'title' => 'Intermediate ' . $module->name,
+                    'content' => 'This lesson dives deeper into the topic of ' . $module->name . '.',
+                    'video_url' => '',
+                    'order_number' => 2,
+                ],
+                [
+                    'module_id' => $module->id,
+                    'title' => 'Advanced ' . $module->name,
+                    'content' => 'The final lesson of ' . $module->name . ' takes a deeper look into advanced concepts.',
+                    'video_url' => '',
+                    'order_number' => 3,
+                ]
+            ];
+
+            foreach ($lessons as $lesson) {
+                Lesson::create($lesson);
+            }
+        }
     }
 }

@@ -23,16 +23,25 @@
                 @foreach ($categories as $category)
                 <tr class="border-b text-black">
                     <td class="p-3 border">{{ $category->name }}</td>
-                    <td class="p-3 border">
-                        <a href="{{ route('categories.edit', $category->id) }}" class="text-blue-500 hover:underline">Edit</a>
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline ml-2" onclick="return confirm('Are you sure?')">
-                                Delete
-                            </button>
-                        </form>
+            
+                    
+                    <td class="p-3 border w-40">
+                        <div class="flex justify-center space-x-2">
+                            <a href="{{  route('categories.edit', $category->id) }}" 
+                                class="bg-blue-200 text-blue-700 px-4 py-2 rounded hover:bg-blue-300 transition duration-300">
+                                Edit
+                            </a>
+                            
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-200 text-red-700 px-4 py-2 rounded hover:bg-red-300 transition duration-300">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                     </td>
+                    
                 </tr>
                 @endforeach
             </tbody>

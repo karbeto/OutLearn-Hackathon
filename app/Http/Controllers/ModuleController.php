@@ -10,7 +10,9 @@ class ModuleController extends Controller
 {
     public function index(Course $course)
     {
-        $course->load("modules");
+        $course->load(['modules' => function ($query) {
+            $query->orderBy('order', 'asc');  // Or 'desc' if you want descending order
+        }]);
 
         return view("modules.index", compact('course'));
     }
