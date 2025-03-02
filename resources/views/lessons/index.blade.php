@@ -31,7 +31,7 @@
                     <td class="p-3 border">{{ $lesson->title }}</td>
                     <td class="p-3 border truncate max-w-xs">{{ $lesson->content }}</td>
                     <td class="p-3 border">{{ $lesson->order_number }}</td>
-                    @if (!is_null($lesson->video_url) || strlen($lesson->video_url) > 0)
+                    @if ($lesson->video_url)
                         <td class="p-3 border flex justify-center items-center">
                             <video controls class="h-40" preload="auto">
                                 <source src="{{ asset('storage/' . $lesson->video_url) }}" type="video/mp4">

@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         User::insert([
             [
                 "name" => "John Doe",
-                "email" => "admin@example.com",
+                "email" => "admin@outlearn.com",
                 "password" => Hash::make("password"),
                 "role_id" => 1,
                 "profile_picture" => ""
@@ -46,6 +46,13 @@ class UserSeeder extends Seeder
             [
                 "name" => "Mike Burton",
                 "email" => "mike@gmail.com",
+                "password" => Hash::make("password"),
+                "role_id" => 3,
+                "profile_picture" => ""
+            ],
+            [
+                "name" => "Michael Carter",
+                "email" => "michael_carter@gmail.com",
                 "password" => Hash::make("password"),
                 "role_id" => 3,
                 "profile_picture" => ""
