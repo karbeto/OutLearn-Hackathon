@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
-                "name" => "Admin",
+                "name" => "John Doe",
                 "email" => "admin@example.com",
                 "password" => Hash::make("password"),
                 "role_id" => 1,
                 "profile_picture" => ""
             ],
             [
-                "name" => "John Doe",
-                "email" => "john@example.com",
+                "name" => "Mike Smith",
+                "email" => "mike@example.com",
                 "password" => Hash::make("password"),
                 "role_id" => 2,
                 "profile_picture" => ""
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "name" => "Mike Burton",
-                "email" => "mike@example.com",
+                "email" => "mike@gmail.com",
                 "password" => Hash::make("password"),
                 "role_id" => 3,
                 "profile_picture" => ""

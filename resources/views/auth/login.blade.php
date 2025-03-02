@@ -11,7 +11,8 @@
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-2xl font-bold text-green-700 text-center mb-6">Welcome</h2>
 
-        <form method="POST" action="/login">
+        <form method="POST" action="{{route('login')}}">
+            @csrf
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 font-medium">Email</label>
                 <input type="email" id="email" name="email" required class="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-green-500">

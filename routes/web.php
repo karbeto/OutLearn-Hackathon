@@ -6,17 +6,11 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InterestController;
 
-Route::get('/', function () {
-    return view('admin-dashboard');
-});
-
-Route::resource('courses', CourseController::class);
-Route::resource('interests', InterestController::class);
-
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route("home");
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -25,6 +19,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::resource('courses', CourseController::class);
+Route::resource('interests', InterestController::class);
+
+Route::get('/', [HomeController::class, "index"])->name("home");
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');

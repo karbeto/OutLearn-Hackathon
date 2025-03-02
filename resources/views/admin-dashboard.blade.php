@@ -14,13 +14,13 @@
     <aside id="sidebar" class="w-64 bg-pink-100 text-blue-900 flex flex-col fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto">
         <div class="flex-1 p-4">
             <div class="flex items-center justify-between mb-6">
-                <a href="#">
+                <a href="{{route('home')}}">
                     <img class="h-12 w-auto" src="{{ asset('images/logo.png') }}" alt="Logo" loading="lazy" />
                 </a>
             </div>
 
             <div class="mb-4">
-                <h3 class="text-lg font-bold mb-2">CRUD:</h3>
+                <h3 class="text-lg font-bold mb-2">Resources:</h3>
                 <div class="mb-4">
                     <a href="{{route('courses.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm  {{ request()->routeIs('courses.index') ? 'bg-gray-700 text-white' : 'text-blue-900' }}">
                         • Manage Courses
