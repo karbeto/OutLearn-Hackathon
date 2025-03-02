@@ -42,9 +42,9 @@ Route::delete("/modules/delete/{module}", [ModuleController::class, "destroy"])-
 
 Route::get('lessons/{module_id}', [LessonController::class, 'index'])->name('lessons.index');
 Route::get('lessons/{module_id}/create', [LessonController::class, 'create'])->name('lessons.create');
-Route::post('lessons/{module_id}', [LessonController::class, 'store'])->name('lessons.store'); 
-Route::get('lessons/{module_id}/{lesson_id}/edit', [LessonController::class, 'edit'])->name('lessons.edit');
-Route::put('lessons/{module_id}/{lesson_id}', [LessonController::class, 'update'])->name('lessons.update'); 
-Route::delete('lessons/{module_id}/{lesson_id}', [LessonController::class, 'destroy'])->name('lessons.destroy'); 
+Route::post('lessons/{module_id}', [LessonController::class, 'store'])->name('lessons.store');
+Route::get('lessons/{module}/edit/{lesson}', [LessonController::class, 'edit'])->name('lessons.edit');
+Route::put('lessons/{module}/update/{lesson}', [LessonController::class, 'update'])->name('lessons.update');
+Route::delete('lessons/{module}/{lesson}', [LessonController::class, 'destroy'])->name('lessons.destroy');
 
 require __DIR__ . '/auth.php';
