@@ -19,7 +19,7 @@ class LessonSeeder extends Seeder
         foreach ($modules as $module) {
             $lessons = [
                 [
-                    'module_id' => $module->id,  // assuming there's a relation between module and modules
+                    'module_id' => $module->id,
                     'title' => 'Introduction to ' . $module->name,
                     'content' => 'This is the first lesson for ' . $module->name . '. It covers the basics.',
                     'video_url' => '',

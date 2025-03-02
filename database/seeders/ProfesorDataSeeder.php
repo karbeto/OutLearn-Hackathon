@@ -13,7 +13,7 @@ class ProfesorDataSeeder extends Seeder
     {
         DB::table('professors_data')->insert([
             [
-                'user_id' => 2,
+                'user_id' => 3,
                 'position' => 'Lecturer',
                 'company' => 'University 6',
                 'gender' => 'male',
@@ -23,7 +23,7 @@ class ProfesorDataSeeder extends Seeder
                 'updated_at' => Carbon::parse('2023-09-30T21:42:33'),
             ],
             [
-                'user_id' => 4,
+                'user_id' => 5,
                 'position' => 'Professor',
                 'company' => 'University 7',
                 'gender' => 'female',

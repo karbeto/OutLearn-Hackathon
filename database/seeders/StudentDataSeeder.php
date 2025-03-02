@@ -16,7 +16,7 @@ class StudentDataSeeder extends Seeder
     {
         DB::table('student_data')->insert([
             [
-                "user_id" => 1,
+                "user_id" => 2,
                 'gender' => 'male',
                 'birth_date' => '2008-06-30',
                 'school_year' => '11th Grade',
@@ -26,7 +26,7 @@ class StudentDataSeeder extends Seeder
                 'updated_at' => Carbon::parse('2023-08-11T17:03:53'),
             ],
             [
-                "user_id" => 3,
+                "user_id" => 4,
                 'gender' => 'male',
                 'birth_date' => '2004-08-02',
                 'school_year' => '11th Grade',
