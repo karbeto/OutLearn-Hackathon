@@ -33,11 +33,6 @@
 
             <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">Login</button>
         </form>
-
-        <p class="text-center text-gray-600 text-sm mt-4">
-            Don't have an account? 
-            <a href="/register" class="text-green-600 hover:underline">Sign Up</a>
-        </p>
     </div>
 
 </body>
