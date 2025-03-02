@@ -26,6 +26,7 @@
                     <td class="p-3 border">{{ $module->name }}</td>
                     <td class="p-3 border">{{ $module->order }}</td>
                     <td class="p-3 border">
+                        <a href="{{ route('lessons.index', ['module_id' => $module->id]) }}" class="text-blue-500 hover:underline">Manage Lessons</a>
                         <a href="{{ route('modules.edit', $module) }}" class="text-blue-500 hover:underline">Edit</a>
                         <form action="{{ route('modules.destroy', $module) }}" method="POST" class="inline">
                             @csrf

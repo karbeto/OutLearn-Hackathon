@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AchievementSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(CourseSeeder::class);
+        $this->call(ModuleSeeder::class);
         $this->call(NewsletterSeeder::class);
+        $this->call(LessonSeeder::class);
         $this->call(InterestSeeder::class);
         $this->call(ModuleSeeder::class);
         $this->call(LessonSeeder::class);
