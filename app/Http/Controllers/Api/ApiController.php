@@ -124,4 +124,28 @@ class ApiController extends Controller
 
         return $this->dataResponse(InterestsResource::collection($interests));
     }
+
+    public function professorDashboard($professorId)
+    {
+        $professor = User::with('role', "professorData", "profesorCourses")->whereHas('role', function ($query) {
+            $query->where('name', 'professor');
+        })->where('id', $professorId)->first();
+
+        if (!$professor) {
+            return $this->error('Resource not found', 404);
+        }
+
+        $totalLessons = $professor->profesorCourses->flatMap(function ($course) {
+            return $course->modules->flatMap(function ($module) {
+                return $module->lessons;
+            });
+        })->count();
+
+        $data = [
+            $professor,
+            $totalLessons
+        ];
+
+        return $this->dataResponse($data);
+    }
 }

@@ -5,6 +5,9 @@
 @section('custom-content')
 <div class="p-6">
     <div class="flex justify-between items-center mb-4">
+        <a href="{{ route('courses.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Back
+        </a>
         <h1 class="text-2xl font-bold text-blue-900">Manage Modules for {{ $course->title }} </h1>
         <a href="{{ route('modules.create',$course) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
             + Add Module

@@ -31,3 +31,6 @@ Route::get("/lessons/{lesson}", [ApiController::class, "lesson"]);
 
 // interests
 Route::get("/interests", [ApiController::class, "interests"]);
+
+// profesor dashboard
+Route::get("/professor/{professorId}/dashboard", [ApiController::class, "professorDashboard"]);
