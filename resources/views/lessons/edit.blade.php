@@ -53,8 +53,10 @@
             @enderror
             @if ($lesson->video_url)
                 <p class="text-sm text-gray-600 mt-2">Current Video: 
-                    <iframe src="{{ asset('storage/' . $lesson->video_url) }}" 
-                        class="w-[50%] h-64 border border-gray-300 rounded-lg shadow-md"></iframe>
+                    <video controls class="w-[80%] border">
+                        <source src="{{ asset('storage/' . $lesson->video_url) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </p>
             @endif
         </div>

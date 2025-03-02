@@ -19,6 +19,7 @@ class LessonResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'order' => $this->order_number,
+            // "video_url" => asset('storage/' . $this->video_url),
             "video_url" => $this->video_url,
             "module_id" => $this->module_id,
             // 'created_at' => $this->created_at->toDateTimeString(),

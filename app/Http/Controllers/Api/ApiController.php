@@ -39,8 +39,13 @@ class ApiController extends Controller
         return $this->dataResponse(CourseResource::collection($courses));
     }
 
-    public function user(User $user)
+    public function user($user)
     {
+        $user = User::find($user);
+
+        if (!$user) {
+            return $this->error('Resource not found', 404);
+        }
 
         return $this->dataResponse(new UserResource($user));
     }
@@ -73,26 +78,45 @@ class ApiController extends Controller
         return $this->dataResponse(UserResource::collection($professors));
     }
 
-    public function course(Course $course)
+    public function course($course)
     {
+        $course = Course::find($course);
+
+        if (!$course) {
+            return $this->error('Resource not found', 404);
+        }
+
         $course->load('modules', 'professors'); // Load modules and professors if necessary
 
         return $this->dataResponse(new CourseResource($course));
     }
 
-    public function module(Module $module)
+    public function module($module)
     {
+        $module = Module::find($module);
+
+        if (!$module) {
+            return $this->error('Resource not found', 404);
+        }
+
         $module->load("lessons");
 
         return $this->dataResponse(new ModuleResource($module));
     }
 
-    public function lesson(Lesson $lesson)
+    public function lesson($lesson)
     {
+        $lesson = Lesson::find($lesson);
+
+        if (!$lesson) {
+            return $this->error('Resource not found', 404);
+        }
+
         $lesson->load("module");
 
         return $this->dataResponse(new LessonResource($lesson));
     }
+
 
     public function interests()
     {

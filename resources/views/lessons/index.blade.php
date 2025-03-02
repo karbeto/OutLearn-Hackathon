@@ -29,16 +29,29 @@
                     <td class="p-3 border truncate max-w-xs">{{ $lesson->content }}</td>
                     <td class="p-3 border">{{ $lesson->order_number }}</td>
                     @if (!is_null($lesson->video_url) || strlen($lesson->video_url) > 0)
-                        <td class="p-3 border"><iframe src="{{asset('storage/' . $lesson->video_url)}}" frameborder="0"></iframe></td>
+                        <td class="p-3 border flex justify-center items-center">
+                            <video controls class="h-40">
+                                <source src="{{ asset('storage/' . $lesson->video_url) }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            
+                        </td>
                     @else
                     <td class="p-3 border">No video provided yet.</td>
                     @endif
-                    <td class="p-3 border">
-                        <a href="{{ route('lessons.edit', ['module' => $module, 'lesson' => $lesson]) }}" class="text-blue-500 hover:underline">Edit</a>
+                    <td class="p-3 border space-x-2">
+                        <a href="{{ route('lessons.edit', ['module' => $module, 'lesson' => $lesson]) }}" 
+                            class="bg-blue-200 text-blue-700 px-4 py-2 rounded hover:bg-blue-300 transition duration-300">
+                             Edit
+                         </a>
+                         
                         <form action="{{ route('lessons.destroy', ['module' => $module, 'lesson' => $lesson]) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline ml-2">Delete</button>
+                            <button type="submit" class="bg-red-200 text-red-700 px-4 py-2 rounded hover:bg-red-300 transition duration-300">
+                                Delete
+                            </button>
+                            
                         </form>
                     </td>
                 </tr>

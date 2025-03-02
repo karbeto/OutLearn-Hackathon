@@ -22,23 +22,29 @@
             <div class="mb-4">
                 <h3 class="text-lg font-bold mb-2">CRUD:</h3>
                 <div class="mb-4">
-                    <a href="{{route(name: 'courses.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
+                    <a href="{{route('courses.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm  {{ request()->routeIs('courses.index') ? 'bg-gray-700 text-white' : 'text-blue-900' }}">
                         • Manage Courses
                     </a>
-                    <a href="{{ route('categories.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
+                    <a href="{{ route('categories.index')}}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm  {{ request()->routeIs('categories.index') ? 'bg-gray-700 text-white' : 'text-blue-900' }}"
+          >
                         • Manage Categories
                     </a>
-                    <a href="{{route(name: 'interests.index') }}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm text-blue-900">
+                    <a href="{{route('interests.index') }}" class="block py-2 px-4 hover:bg-gray-600 rounded text-sm  {{ request()->routeIs('interests.index') ? 'bg-gray-700 text-white' : 'text-blue-900' }}"
+                  >
                         • Manage Interests
                     </a>
                 </div>
 
             </div>
 
-            <a href="{{ route('logout') }}"
-                class="flex items-center py-2 px-3 mb-2 w-full text-left bg-red-600 hover:bg-red-500 rounded text-sm text-white">
-                <span>Logout</span>
-            </a>
+            <form action="{{ route('logout') }}" method="POST" class="w-full">
+                @csrf
+                <button type="submit"
+                    class="flex items-center py-2 px-3 mb-2 w-full text-left bg-red-600 hover:bg-red-500 rounded text-sm text-white">
+                    <span>Logout</span>
+                </button>
+            </form>
+            
 
             <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                 @csrf
